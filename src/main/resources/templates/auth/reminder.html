@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script src="../public/lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../public/lib/vue/vue.js"></script>
+
+</head>
+<body>
+<div id="header" v-on:click="AddData()">
+    ADD
+</div>
+<div id="container" v-bind:style="{background:bcolor[cindex]}">
+    <template v-for="str in list">
+        <p>{{str}}</p>
+        <hr>
+    </template>
+</div>
+
+</body>
+<script>
+    var head = new Vue({
+
+        el: '#header',
+        data: {},
+        methods: {
+
+            AddData: function () {
+                var res = confirm("请选择");
+
+                if (res == true) {
+
+
+                    $.ajax({
+                        url: 'http://120.79.143.100:8098/add' + '/' + Date.now(),
+                        type: "GET",
+                        dataType: 'text',
+                        success(res) {
+                            if (res == 1)
+                                container.getData();
+                        }
+                    })
+                }
+            }
+        }
+    });
+
+    var container = new Vue({
+
+        el: '#container',
+        data: {
+            list: ['live as a man', 'don\'t waste your life '],
+            bcolor: ['lightslategray', 'orange', 'darkred'],
+            cindex: 0
+        }, methods: {
+            getData: function () {
+                var vm = this;
+                $.ajax({
+                    url: 'http://120.79.143.100:8098/get',
+                    crossDomain: true,
+                    type: "GET",
+                    success(res) {
+                        // alert(vm.list)
+                        vm.list = res;
+                        if (vm.list.length > 5)
+                            vm.cindex = 1
+                    }
+                })
+
+            }
+        },
+        created: function () {
+            this.getData();
+        }
+    });
+</script>
+<style type="text/css">
+    body {
+        width: 95.5%;
+        height: 100%;
+    }
+
+    #header {
+        position: relative;
+        float: top;
+        height: 50px;
+        max-width: 1200px;
+        background-color: black;
+        border-radius: 20px;
+        text-align: center;
+        margin: auto;
+        font-size: 36px;
+        color: white;
+    }
+
+    #header:hover {
+        background-color: lightslategray;
+    }
+
+    #container {
+        margin: auto;
+        position: relative;
+        max-width: 1200px;
+        float: top;
+        height: 500px;
+        border-radius: 8px;
+        background-color: lightslategray;
+    }
+</style>
+</html>

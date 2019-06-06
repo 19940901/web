@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>登录</title>
+
+    <link href="../lib/bootstrap3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../lib/bootstrap3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/info.css" rel="stylesheet">
+  </head>
+  <body>
+	  	<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">
+		        <img alt="Brand" style="height:50px;margin-top:-16px;" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1529642799423&di=68f3c5f0c2562a543c3b87434cc04d47&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01132a5603ce7d6ac7251df8b31efe.jpg">
+		      </a>
+		    </div>
+		  </div>
+		  
+		</nav>
+		
+	  <div class="container">
+	  		<p class="navbar-text" id="text">消息提示</p>
+	  		<div class="row">
+			    <div class="col-md-12">
+				    <div class="input-group input">
+					  <span class="input-group-addon">请输入编号：</span>
+					  <input type="text" id="username" class="form-control" placeholder="请输入编号" aria-describedby="sizing-addon2">
+					</div>
+					<div class="btn-group button" role="group">
+					    <button type="button" class="btn btn-default" onclick="getInfo()">登录即可</button>
+					    <button type="button" class="btn btn-default" onclick="getInfo1()">游客和管理员都可以</button>
+					    <button type="button" class="btn btn-default" onclick="getInfo2()">只有管理员可以</button>
+					    <button type="button" class="btn btn-default" onclick="getInfo3()">管理员并且employee:delete即可</button>
+					</div>
+				</div>
+			</div>
+			<div class="btn-group button" role="group">
+			    <button type="button" class="btn btn-default" onclick="logout()">退出</button>
+			</div>
+	  </div>
+    
+    <script src="../lib/jquery/jquery-3.3.1.min.js"></script>
+    <script src="../lib/jquery/jquery.cookie.js"></script>
+    <script src="../lib/bootstrap3.3.7/js/bootstrap.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/info.js"></script>
+  </body>
+</html>
